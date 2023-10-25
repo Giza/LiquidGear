@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Imports System.Text
 Imports System.Text.RegularExpressions
 Public Class FrmMain
@@ -154,7 +154,7 @@ Public Class FrmMain
                 End If
             Next
             If PACB_Offset = 0 Then
-                If Not Silent_Mode Then MessageBox.Show("Formato não suportado!" & Environment.NewLine & File_Name, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                If Not Silent_Mode Then MessageBox.Show("Format not supported!" & Environment.NewLine & File_Name, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Input.Close()
                 Format = SDT.Unknow
                 Exit Sub
@@ -205,7 +205,7 @@ Public Class FrmMain
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         Apply()
         Save(Current_Opened_File)
-        MessageBox.Show("O arquivo foi alterado com sucesso!", "Feito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show("The file has been changed successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
     Private Sub Save(File_Name As String)
         Dim Output As New FileStream(File_Name, FileMode.Create)
@@ -468,6 +468,8 @@ Public Class FrmMain
             Dim Dump_Dir As String = Path.Combine(Application.StartupPath, "Dump")
             Directory.CreateDirectory(Dump_Dir)
             Select Case Environment.GetCommandLineArgs()(1)
+                Case "-h", "-help"
+                    MessageBox.Show("For extract:" & Environment.NewLine & "    LiquidGear.exe [-e] folder_*.sdt_files" & Environment.NewLine & "For import:" & Environment.NewLine & "    LiquidGear.exe [-i] folder_*.sdt_files folder_*.txt_files", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Case "-e", "-esnd"
                     Dim Extract_Audio As Boolean
                     If Environment.GetCommandLineArgs()(1) = "-esnd" Then Extract_Audio = True
@@ -511,8 +513,8 @@ Public Class FrmMain
 
         End If
 
-        If Dumped Then MessageBox.Show("Arquivos dumpados com sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        If Inserted Then MessageBox.Show("Foram inseridos " & Insertion_Count & " arquivo(s)!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        If Dumped Then MessageBox.Show("Files dumped successfully!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        If Inserted Then MessageBox.Show(Insertion_Count & " file(s) were import!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Function Adapt_Text(Text As String) As Byte()
