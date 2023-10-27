@@ -30,8 +30,8 @@ Partial Class FrmMain
         '
         'LblTitle
         '
-        Me.LblTitle.Location = New System.Drawing.Point(4, 4)
-        Me.LblTitle.Size = New System.Drawing.Size(273, 19)
+        Me.LblTitle.Location = New System.Drawing.Point(-244, 4)
+        Me.LblTitle.Size = New System.Drawing.Size(323, 23)
         Me.LblTitle.Text = "LiquidGear build 20/03/15 #1 by gdkchan"
         '
         'TxtDialogs
@@ -47,6 +47,7 @@ Partial Class FrmMain
         '
         Me.DialogList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.CDiags})
         Me.DialogList.FullRowSelect = True
+        Me.DialogList.HideSelection = False
         Me.DialogList.Location = New System.Drawing.Point(8, 36)
         Me.DialogList.MultiSelect = False
         Me.DialogList.Name = "DialogList"
@@ -66,7 +67,7 @@ Partial Class FrmMain
         Me.BtnOpen.Name = "BtnOpen"
         Me.BtnOpen.Size = New System.Drawing.Size(80, 24)
         Me.BtnOpen.TabIndex = 13
-        Me.BtnOpen.Text = "&Abrir"
+        Me.BtnOpen.Text = "&Open"
         Me.BtnOpen.UseVisualStyleBackColor = True
         '
         'BtnSave
@@ -76,7 +77,7 @@ Partial Class FrmMain
         Me.BtnSave.Name = "BtnSave"
         Me.BtnSave.Size = New System.Drawing.Size(80, 24)
         Me.BtnSave.TabIndex = 14
-        Me.BtnSave.Text = "&Salvar"
+        Me.BtnSave.Text = "&Save"
         Me.BtnSave.UseVisualStyleBackColor = True
         '
         'BtnExport
@@ -86,7 +87,7 @@ Partial Class FrmMain
         Me.BtnExport.Name = "BtnExport"
         Me.BtnExport.Size = New System.Drawing.Size(80, 24)
         Me.BtnExport.TabIndex = 15
-        Me.BtnExport.Text = "&Exportar"
+        Me.BtnExport.Text = "&Export"
         Me.BtnExport.UseVisualStyleBackColor = True
         '
         'BtnImport
@@ -96,12 +97,12 @@ Partial Class FrmMain
         Me.BtnImport.Name = "BtnImport"
         Me.BtnImport.Size = New System.Drawing.Size(80, 24)
         Me.BtnImport.TabIndex = 16
-        Me.BtnImport.Text = "&Importar"
+        Me.BtnImport.Text = "&Import"
         Me.BtnImport.UseVisualStyleBackColor = True
         '
         'FrmMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 19.0!)
         Me.ClientSize = New System.Drawing.Size(640, 384)
         Me.Controls.Add(Me.BtnImport)
         Me.Controls.Add(Me.BtnExport)
