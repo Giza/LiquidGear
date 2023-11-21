@@ -1,4 +1,4 @@
-Imports System.IO
+﻿Imports System.IO
 Imports System.Text
 Imports System.Text.RegularExpressions
 Public Class FrmMain
@@ -128,7 +128,7 @@ Public Class FrmMain
                 If Not Silent_Mode Then DialogList.Items.Add("0x" & Hex(Offset).PadLeft(8, "0"c) & " [" & Crop_Text(Text) & "]")
             Next
 
-            'Lê dados adicionais do arquivo (relacionados ao script?)
+            'Read additional data from file (script related?)
             Input.Seek(0, SeekOrigin.Begin)
             ReDim Script_Header(Header_Offset - 1)
             Input.Read(Script_Header, 0, Script_Header.Length)
@@ -182,7 +182,7 @@ Public Class FrmMain
                 If Not Silent_Mode Then DialogList.Items.Add("0x" & Hex(Offset).PadLeft(8, "0"c) & " [" & Crop_Text(Dialog.Text) & "]")
             End While
 
-            'Lê dados adicionais do arquivo (áudio)
+            'Read additional data from the file (audio)
             Input.Seek(0, SeekOrigin.Begin)
             ReDim Header(PACB_Offset - 1)
             Input.Read(Header, 0, Header.Length)

@@ -23,13 +23,19 @@ Public Class Utils
         While CurrByte <> 0
             If CurrByte = &HA Then '0x0A (LF)
                 Text &= Environment.NewLine
-            ElseIf CurrByte = &H1F Then 'Espanhol
+            ElseIf CurrByte = &H1F Then 'Spanish
                 CurrByte = Data.ReadByte()
                 Text &= Chr((CurrByte + &HDA) And &HFF)
             ElseIf CurrByte >= &HC2 And CurrByte <= &HC5 Then 'UTF8
                 Dim Buffer(1) As Byte
                 Buffer(0) = CurrByte
                 Buffer(1) = Data.ReadByte()
+                Text &= Encoding.UTF8.GetString(Buffer)
+            ElseIf CurrByte >= &HE3 And CurrByte <= &HE9 Or CurrByte >= &HEF And CurrByte <= &HEF Then 'japanese
+                Dim Buffer(2) As Byte
+                Buffer(0) = CurrByte
+                Buffer(1) = Data.ReadByte()
+                Buffer(2) = Data.ReadByte()
                 Text &= Encoding.UTF8.GetString(Buffer)
             Else 'ANSI
                 If CurrByte > &H7F Then
